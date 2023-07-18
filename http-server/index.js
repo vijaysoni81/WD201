@@ -1,11 +1,6 @@
-const hello = () => {
-  console.log("Hello Atiya Khan Node.js!");
-};
-
-hello();
 const http_var = require("http");
 const fs_var = require("fs");
-
+const args = require('minimist')(process.argv.slice(2));
 let Content_home = "";
 let Content_project = "";
 let Content_registration = "";
