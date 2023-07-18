@@ -1,14 +1,22 @@
 {
-  "name": "hello-world",
+  "name": "http-server",
   "version": "1.0.0",
+  "description": "NOne",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "minimist": "^1.2.8"
   },
-  "author": "Atiya Khan",
+  "scripts": {
+    "start": "index.js",
+    "test": "port 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "WD201"
+  },
+  "author": "Atiya Khan <atiya.khan@raisoni.net>",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "eslint": "^8.43.0"
+    "eslint": "^8.34.0"
   }
 }
