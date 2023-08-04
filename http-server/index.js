@@ -1,51 +1,48 @@
 const args = require("minimist")(process.argv.slice(2));
-p = args.port
+p = 5000
 console.log(args.port); // prints the value of the --port option
 
-const http_var = require("http");
-const fs_var = require("fs");
-const args = require('minimist')(process.argv.slice(2));
-let Content_home = "";
-let Content_project = "";
-let Content_registration = "";
+const http = require("http");
+const fs = require("fs");
 
-fs_var.readFile("./home.html", (err, home) => {
+let homeContent = "";
+let projectContent = "";
+let registrationContent = "";
+
+fs.readFile("home.html", (err, home) => {
   if (err) {
     throw err;
   }
- Content_home = home;
+  homeContent = home;
 });
-
-fs_var.readFile("./project.html", (err, project) => {
+fs.readFile("registration.html", (err, registration) => {
   if (err) {
     throw err;
   }
-  Content_project = project;
+  registrationContent = registration;
 });
-
-fs_var.readFile("./registration.html", (err, registration) => {
+fs.readFile("project.html", (err, project) => {
   if (err) {
     throw err;
   }
-  Content_registration = registration;
+  projectContent = project;
 });
-  
- http
-  .createServer((request, response) => {
+http.createServer((request, response) => {
     let url = request.url;
     response.writeHeader(200, { "Content-Type": "text/html" });
     switch (url) {
       case "/project":
-        response.write(Content_project);
+        response.write(projectContent);
         response.end();
         break;
-      case "/registration":
-        response.write(Content_registration);
+        case "/registration":
+        response.write(registrationContent);
         response.end();
         break;
       default:
-        response.write(Content_home);
+        response.write(homeContent);
         response.end();
         break;
     }
-  }).listen(args.port);   
+  })
+  .listen(p);
